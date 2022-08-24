@@ -1,5 +1,6 @@
 package SuperCodersApp.SuperCoders;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Profile {
@@ -7,16 +8,16 @@ public class Profile {
     private String image;
     private String phone;
     private String user;
-    private Date createdAt;
-    private Date updatedAt;
+    private LocalDate createdAt;
+    private LocalDate updatedAt;
 
     public Profile(String id, String image, String phone, String user, Date createdAt, Date updatedAt) {
         this.id = id;
         this.image = image;
         this.phone = phone;
         this.user = user;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.createdAt = LocalDate.now();
+        this.updatedAt = LocalDate.now();
 
     }
     public String getId() {
@@ -25,6 +26,7 @@ public class Profile {
 
     public void setId(String id) {
         this.id = id;
+
     }
 
     public String getImage() {
@@ -51,19 +53,15 @@ public class Profile {
         this.user = user;
     }
 
-    public Date getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
+    public LocalDate getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
     }
 

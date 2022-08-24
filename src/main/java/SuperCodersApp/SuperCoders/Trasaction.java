@@ -32,6 +32,7 @@ public class Trasaction {
 
     public String getCancept() {
         return cancept;
+
     }
 
     public void setCancept(String cancept) {
@@ -40,6 +41,7 @@ public class Trasaction {
 
     public Float getAmout() {
         return amout;
+
     }
 
     public void setAmout(Float amout) {
