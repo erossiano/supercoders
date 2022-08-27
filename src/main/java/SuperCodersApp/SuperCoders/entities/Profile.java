@@ -1,4 +1,4 @@
-package SuperCodersApp.SuperCoders;
+package SuperCodersApp.SuperCoders.entities;
 
 import java.time.LocalDate;
 import java.util.Date;

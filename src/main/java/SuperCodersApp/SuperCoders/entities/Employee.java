@@ -1,4 +1,5 @@
-package SuperCodersApp.SuperCoders;
+package SuperCodersApp.SuperCoders.entities;
+
 public class Employee {
 /*    Es posible crear una nueva instancia de la clase
 "Empleado"

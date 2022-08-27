@@ -1,4 +1,4 @@
-package SuperCodersApp.SuperCoders;
+package SuperCodersApp.SuperCoders.entities;
 public class Enterprise {
 
     private String name;
