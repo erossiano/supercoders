@@ -1,25 +1,27 @@
 package SuperCodersApp.SuperCoders;
 
-import java.util.Date;
-
+import java.time.LocalDate;
 public class Trasaction {
 
     private Long id;
-    private String cancept;
+    private String concept;
     private Float amout;
-    private Profile user;
+    private String user;
     private Enterprise enterprise;
-    private Date createdAt;
-    private Date updatedAt;
+    private LocalDate createdAt;
+    private LocalDate updatedAt;
 
-    public Trasaction(Long id, String cancept, Float amout, Profile user, Enterprise enterprise, Date createdAt, Date updatedAt) {
+   protected Trasaction(){
+
+   }
+    public Trasaction(Long id, String concept, Float amout, Profile user, Enterprise enterprise, LocalDate createdAt, LocalDate updatedAt) {
         this.id = id;
-        this.cancept = cancept;
+        this.concept = concept;
         this.amout = amout;
-        this.user = user;
+        this.user = user.getUser();
         this.enterprise = enterprise;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.createdAt = LocalDate.now();
+        this.updatedAt = LocalDate.now();
     }
 
     public Long getId() {
@@ -30,13 +32,13 @@ public class Trasaction {
         this.id = id;
     }
 
-    public String getCancept() {
-        return cancept;
+    public String getConcept() {
+        return concept;
 
     }
 
-    public void setCancept(String cancept) {
-        this.cancept = cancept;
+    public void setConcept(String concept) {
+        this.concept = concept;
     }
 
     public Float getAmout() {
@@ -48,11 +50,11 @@ public class Trasaction {
         this.amout = amout;
     }
 
-    public Profile getUser() {
+    public String getUser() {
         return user;
     }
 
-    public void setUser(Profile user) {
+    public void setUser(String user) {
         this.user = user;
     }
 
@@ -64,20 +66,32 @@ public class Trasaction {
         this.enterprise = enterprise;
     }
 
-    public Date getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
+    public LocalDate getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "concept='" + getConcept()+ '\'' +
+                ", amount=" + getAmout()+
+                ", profile=" +getUser()+
+                ", enterprise=" + enterprise.getName() +
+                ", createdAt=" + getCreatedAt() +
+                ", createdUd=" + getUpdatedAt() +
+        '}';
     }
 
 

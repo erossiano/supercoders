@@ -62,8 +62,18 @@ public class Profile {
     }
 
     public void setUpdatedAt(LocalDate updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = updatedAt.now();
     }
 
-
+    @Override
+    public String toString() {
+        return "Profile{" +
+                "id='" + id + '\'' +
+                ", image='" + image + '\'' +
+                ", phone='" + phone + '\'' +
+                ", user='" + user + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
+    }
 }
