@@ -3,7 +3,7 @@ package SuperCodersApp.SuperCoders;
 import java.time.LocalDate;
 public class Trasaction {
 
-    private Long id;
+    private Profile id;
     private String concept;
     private Float amout;
     private String user;
@@ -14,21 +14,21 @@ public class Trasaction {
    protected Trasaction(){
 
    }
-    public Trasaction(Long id, String concept, Float amout, Profile user, Enterprise enterprise, LocalDate createdAt, LocalDate updatedAt) {
+    public Trasaction(Profile id, String concept, Float amout, Profile user, Enterprise enterprise) {
         this.id = id;
         this.concept = concept;
         this.amout = amout;
-        this.user = user.getUser();
+        this.user = new String();
         this.enterprise = enterprise;
         this.createdAt = LocalDate.now();
         this.updatedAt = LocalDate.now();
     }
 
-    public Long getId() {
+    public Profile getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Profile  id) {
         this.id = id;
     }
 

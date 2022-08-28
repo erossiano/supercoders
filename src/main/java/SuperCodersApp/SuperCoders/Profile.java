@@ -11,7 +11,7 @@ public class Profile {
     private LocalDate createdAt;
     private LocalDate updatedAt;
 
-    public Profile(String id, String image, String phone, String user, Date createdAt, Date updatedAt) {
+    public Profile(String id, String image, String phone, String user) {
         this.id = id;
         this.image = image;
         this.phone = phone;
@@ -20,6 +20,7 @@ public class Profile {
         this.updatedAt = LocalDate.now();
 
     }
+
     public String getId() {
         return id;
     }
