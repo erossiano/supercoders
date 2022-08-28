@@ -1,9 +1,9 @@
-package SuperCodersApp.SuperCoders;
+package SuperCodersApp.SuperCoders.identies;
 
 import java.time.LocalDate;
 public class Trasaction {
 
-    private Profile id;
+    private String id;
     private String concept;
     private Float amout;
     private String user;
@@ -14,21 +14,21 @@ public class Trasaction {
    protected Trasaction(){
 
    }
-    public Trasaction(Profile id, String concept, Float amout, Profile user, Enterprise enterprise) {
+    public Trasaction(String id, String concept, Float amout, String user, Enterprise enterprise) {
         this.id = id;
         this.concept = concept;
         this.amout = amout;
-        this.user = new String();
+        this.user = user;
         this.enterprise = enterprise;
         this.createdAt = LocalDate.now();
         this.updatedAt = LocalDate.now();
     }
 
-    public Profile getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Profile  id) {
+    public void setId(String  id) {
         this.id = id;
     }
 
@@ -84,16 +84,16 @@ public class Trasaction {
 
     @Override
     public String toString() {
-        return "Transaction{" +
-                "concept='" + getConcept()+ '\'' +
-                ", amount=" + getAmout()+
-                ", profile=" +getUser()+
-                ", enterprise=" + enterprise.getName() +
-                ", createdAt=" + getCreatedAt() +
-                ", createdUd=" + getUpdatedAt() +
-        '}';
+        return "Trasaction{" +
+                "id='" + id + '\'' +
+                ", concept='" + concept + '\'' +
+                ", amout=" + amout +
+                ", user='" + user + '\'' +
+                ", enterprise=" + enterprise +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
     }
-
 
 
 }

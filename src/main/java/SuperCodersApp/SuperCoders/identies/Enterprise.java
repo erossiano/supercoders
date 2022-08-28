@@ -1,16 +1,34 @@
-package SuperCodersApp.SuperCoders;
-public class Enterprise {
+package SuperCodersApp.SuperCoders.identies;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "nterprise")
+public class Enterprise {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    @Column(name = "name", unique = true)
     private String name;
+    @Column(name = "address")
     private String address;
+    @Column(name = "phone")
     private String phone;
+    @Column(name = "document", unique = true)
     private String NIT;
+
+    /*protected Enterprise() {
+    }*/
 
     public Enterprise(String name, String address, String phone, String NIT) {
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.NIT = NIT;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getName() {
@@ -45,7 +63,7 @@ public class Enterprise {
         this.NIT = NIT;
     }
 
-@Override
+/*@Override
     public String toString() {
         return "Enterprise{" +
                 "name='" + name + '\'' +
@@ -53,5 +71,5 @@ public class Enterprise {
                 ", phone='" + phone + '\'' +
                 ", NIT='" + NIT + '\'' +
                 '}';
-    }
+    }*/
 }
