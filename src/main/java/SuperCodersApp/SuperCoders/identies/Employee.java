@@ -1,25 +1,38 @@
-package SuperCodersApp.SuperCoders;
-public class Employee {
-/*    Es posible crear una nueva instancia de la clase
-"Empleado"
-    Es posible leer y modificar el nombre de un empleado
-    Es posible leer y modificar el correo de un empleado
-    Es posible leer y modificar la empresa a la que el
-    empleado pertenece
-    Es posible leer y modificar el rol del empleado
-            (administrador, operativo)*/
+package SuperCodersApp.SuperCoders.identies;
 
+import SuperCodersApp.SuperCoders.identies.Enterprise;
+import SuperCodersApp.SuperCoders.identies.Role;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Employee")
+public class Employee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "email")
     private String email;
+    @ManyToOne
     private Enterprise enterprise;
+
+    @Column(name = "role")
     private Role role;
 
+    protected Employee() {
+    }
     public Employee(String name, String email) {
         this.name = name;
         this.email = email;
         this.role = Role.Operator;
     }
 
+    public long getId() {
+        return id;
+    }
     public String getName() {
         return name;
     }
