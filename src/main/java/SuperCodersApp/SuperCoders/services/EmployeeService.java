@@ -14,7 +14,8 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public List getAllEmployees(){
+    public List<Employee> getAllEmployees(){
+        System.out.println(this.employeeRepository.findAll());
         return this.employeeRepository.findAll();
     }
 }

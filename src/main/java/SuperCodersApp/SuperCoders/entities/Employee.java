@@ -1,5 +1,6 @@
 package SuperCodersApp.SuperCoders.entities;
 
+
 import javax.persistence.*;
 
 @Entity
@@ -49,10 +50,10 @@ public class Employee {
     public Enterprise getEnterprise() {
         return enterprise;
     }
-
+/*
     public String getEnterpriseName() {
         return enterprise.getName();
-    }
+    }*/
 
     public void setEnterprise(Enterprise enterprise) {
         this.enterprise = enterprise;
@@ -62,7 +63,7 @@ public class Employee {
         return role;
     }
 
-    public String getRoleName(){
+ /*   public String getRoleName(){
         return switch (this.role) {
             case Admin -> "Admin";
             case Operator -> "Operator";
@@ -72,9 +73,9 @@ public class Employee {
     public void setRole(Role role) {
         this.role = role;
     }
+*/
 
-
-    @Override
+/*    @Override
     public String toString() {
         return "Employee{" +
                 "name='" + this.name + '\'' +
@@ -82,5 +83,5 @@ public class Employee {
                 ", enterprise=" + getEnterpriseName() +
                 ", role=" + getRoleName() +
                 '}';
-    }
+    }*/
 }
