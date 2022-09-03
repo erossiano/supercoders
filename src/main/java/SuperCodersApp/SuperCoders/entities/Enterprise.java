@@ -1,4 +1,4 @@
-package SuperCodersApp.SuperCoders.identies;
+package SuperCodersApp.SuperCoders.entities;
 
 import javax.persistence.*;
 

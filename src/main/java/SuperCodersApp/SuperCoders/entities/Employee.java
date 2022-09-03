@@ -1,7 +1,4 @@
-package SuperCodersApp.SuperCoders.identies;
-
-import SuperCodersApp.SuperCoders.identies.Enterprise;
-import SuperCodersApp.SuperCoders.identies.Role;
+package SuperCodersApp.SuperCoders.entities;
 
 import javax.persistence.*;
 
@@ -22,7 +19,7 @@ public class Employee {
     @Column(name = "role")
     private Role role;
 
-    protected Employee() {
+    public Employee() {
     }
     public Employee(String name, String email) {
         this.name = name;
