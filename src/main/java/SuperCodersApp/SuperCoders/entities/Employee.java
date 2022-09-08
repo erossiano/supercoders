@@ -30,6 +30,10 @@ public class Employee {
     public long getId() {
         return id;
     }
+    public void setid(long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -50,9 +54,9 @@ public class Employee {
         return enterprise;
     }
 
-    public String getEnterpriseName() {
+    /*public String getEnterpriseName() {
         return enterprise.getName();
-    }
+    }*/
 
     public void setEnterprise(Enterprise enterprise) {
         this.enterprise = enterprise;
@@ -62,7 +66,9 @@ public class Employee {
         return role;
     }
 
-    public String getRoleName(){
+
+
+    /*public String getRoleName(){
         return switch (this.role) {
             case Admin -> "Admin";
             case Operator -> "Operator";
@@ -82,5 +88,5 @@ public class Employee {
                 ", enterprise=" + getEnterpriseName() +
                 ", role=" + getRoleName() +
                 '}';
-    }
+    }*/
 }

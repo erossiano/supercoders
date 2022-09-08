@@ -3,7 +3,7 @@ package SuperCodersApp.SuperCoders.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "nterprise")
+@Table(name = "Enterprise")
 public class Enterprise {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
