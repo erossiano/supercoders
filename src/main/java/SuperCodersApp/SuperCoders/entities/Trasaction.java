@@ -11,9 +11,9 @@ public class Trasaction {
     private LocalDate createdAt;
     private LocalDate updatedAt;
 
-   protected Trasaction(){
+    protected Trasaction(){
 
-   }
+    }
     public Trasaction(String id, String concept, Float amout, String user, Enterprise enterprise) {
         this.id = id;
         this.concept = concept;
