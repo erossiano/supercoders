@@ -34,7 +34,7 @@ public class EmployeeService implements IEmployeeService{
     @Override
     public Boolean createEmployeeS(Employee employee) {
         try {
-            employee.setid(0L);
+            employee.setId(0l);
             this.employeeRepository.save(employee);
             return true;
         }catch(Exception e){
@@ -62,3 +62,8 @@ public class EmployeeService implements IEmployeeService{
         }
     }
 }
+
+
+
+
+

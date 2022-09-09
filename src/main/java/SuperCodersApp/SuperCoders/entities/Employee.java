@@ -14,9 +14,11 @@ public class Employee {
     @Column(name = "email")
     private String email;
     @ManyToOne
+    @JoinColumn(name="enterprise")
     private Enterprise enterprise;
 
     @Column(name = "role")
+    @Enumerated(EnumType.ORDINAL)
     private Role role;
 
     public Employee() {
@@ -30,7 +32,8 @@ public class Employee {
     public long getId() {
         return id;
     }
-    public void setid(long id) {
+
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -65,22 +68,12 @@ public class Employee {
     public Role getRole() {
         return role;
     }
-
-
-
-    /*public String getRoleName(){
-        return switch (this.role) {
-            case Admin -> "Admin";
-            case Operator -> "Operator";
-        };
-    }
-
     public void setRole(Role role) {
         this.role = role;
     }
 
 
-    @Override
+    /*@Override
     public String toString() {
         return "Employee{" +
                 "name='" + this.name + '\'' +

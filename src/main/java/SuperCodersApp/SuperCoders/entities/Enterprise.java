@@ -3,10 +3,11 @@ package SuperCodersApp.SuperCoders.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Enterprise")
+@Table(name = "enterprise")
 public class Enterprise {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private long id;
     @Column(name = "name", unique = true)
     private String name;
@@ -17,8 +18,8 @@ public class Enterprise {
     @Column(name = "document", unique = true)
     private String NIT;
 
-    /*protected Enterprise() {
-    }*/
+    protected Enterprise() {
+    }
 
     public Enterprise(String name, String address, String phone, String NIT) {
         this.name = name;
@@ -29,6 +30,10 @@ public class Enterprise {
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
