@@ -1,23 +1,37 @@
-package SuperCodersApp.SuperCoders;
-public class Employee {
-/*    Es posible crear una nueva instancia de la clase
-"Empleado"
-    Es posible leer y modificar el nombre de un empleado
-    Es posible leer y modificar el correo de un empleado
-    Es posible leer y modificar la empresa a la que el
-    empleado pertenece
-    Es posible leer y modificar el rol del empleado
-            (administrador, operativo)*/
+package SuperCodersApp.SuperCoders.entities;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Employee")
+public class Employee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "email")
     private String email;
+    @ManyToOne
     private Enterprise enterprise;
+
+    @Column(name = "role")
     private Role role;
 
+    public Employee() {
+    }
     public Employee(String name, String email) {
         this.name = name;
         this.email = email;
         this.role = Role.Operator;
+    }
+
+    public long getId() {
+        return id;
+    }
+    public void setid(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -40,9 +54,9 @@ public class Employee {
         return enterprise;
     }
 
-    public String getEnterpriseName() {
+    /*public String getEnterpriseName() {
         return enterprise.getName();
-    }
+    }*/
 
     public void setEnterprise(Enterprise enterprise) {
         this.enterprise = enterprise;
@@ -52,7 +66,9 @@ public class Employee {
         return role;
     }
 
-    public String getRoleName(){
+
+
+    /*public String getRoleName(){
         return switch (this.role) {
             case Admin -> "Admin";
             case Operator -> "Operator";
@@ -72,5 +88,17 @@ public class Employee {
                 ", enterprise=" + getEnterpriseName() +
                 ", role=" + getRoleName() +
                 '}';
-    }
+    }*/
 }
+
+
+
+
+
+
+
+
+
+
+
+
