@@ -9,23 +9,27 @@ import java.util.List;
 @RestController
 @RequestMapping("employee")
 public class EmployeeController {
-    private final EmployeeService employeeService;
+    EmployeeService employeeService;
 
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
+
     @GetMapping
-    public List<Employee> getAllEmployeeS (){
-        return this.employeeService.getAllEmployees();
+    public List<Employee> getAllEmployee(){
+        return this.employeeService.getAllEmployeeS();
     }
+
     @GetMapping("/{id}")
-    public Employee getEmployeeS (@PathVariable("id") long id){
+    public Employee getEmployee(@PathVariable("id") long id){
         return this.employeeService.getEmployeeS(id);
     }
+
     @PostMapping
     public Boolean createEmployee(@RequestBody Employee employee){
         return this.employeeService.createEmployeeS(employee);
     }
+
     @PatchMapping("/{id}")
 
     public Boolean updateEmployee(@PathVariable("id") long id, @RequestBody Employee employee){
@@ -46,3 +50,11 @@ public class EmployeeController {
     }
 
 }
+
+
+
+
+
+
+
+

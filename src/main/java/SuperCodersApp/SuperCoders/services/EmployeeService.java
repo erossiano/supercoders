@@ -16,10 +16,6 @@ public class EmployeeService implements IEmployeeService{
         this.employeeRepository = employeeRepository;
     }
 
-    public List<Employee> getAllEmployees(){
-        return this.employeeRepository.findAll();
-    }
-
     @Override
     public List<Employee> getAllEmployeeS() {
         return this.employeeRepository.findAll();
@@ -27,17 +23,16 @@ public class EmployeeService implements IEmployeeService{
 
     @Override
     public Employee getEmployeeS(long id) {
-        Optional<Employee> e1 = this.employeeRepository.findById(id);
-        return e1.orElse(null);
+        return this.employeeRepository.findById(id);
     }
 
     @Override
     public Boolean createEmployeeS(Employee employee) {
-        try {
-            employee.setid(0L);
+        if(employee.getId() == 0L){
+            //employee.setId(0L);
             this.employeeRepository.save(employee);
             return true;
-        }catch(Exception e){
+        }else{
             return false;
         }
     }
@@ -62,3 +57,8 @@ public class EmployeeService implements IEmployeeService{
         }
     }
 }
+
+
+
+
+

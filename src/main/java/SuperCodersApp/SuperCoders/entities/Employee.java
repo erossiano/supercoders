@@ -3,7 +3,7 @@ package SuperCodersApp.SuperCoders.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Employee")
+@Table(name = "employee")
 public class Employee {
 
     @Id
@@ -13,27 +13,41 @@ public class Employee {
     private String name;
     @Column(name = "email")
     private String email;
+     @Column(name = "role")
+     @Enumerated(EnumType.ORDINAL)
+    private Role role;
     @ManyToOne
+    @JoinColumn(name = "enterprise_id")
     private Enterprise enterprise;
 
-    @Column(name = "role")
-    private Role role;
+    @OneToOne
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
 
-    public Employee() {
+    public Profile getProfile() {
+        return profile;
     }
-    public Employee(String name, String email) {
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
+    protected Employee() {
+    }
+    public Employee(String name, String email, Profile profile,Enterprise enterprise) {
         this.name = name;
         this.email = email;
+        this.profile = profile;
+        this.enterprise = enterprise;
         this.role = Role.Operator;
     }
 
     public long getId() {
         return id;
     }
-    public void setid(long id) {
+    public void setId(long id) {
         this.id = id;
     }
-
     public String getName() {
         return name;
     }
@@ -50,55 +64,19 @@ public class Employee {
         this.email = email;
     }
 
-    public Enterprise getEnterprise() {
-        return enterprise;
-    }
-
-    /*public String getEnterpriseName() {
-        return enterprise.getName();
-    }*/
-
-    public void setEnterprise(Enterprise enterprise) {
-        this.enterprise = enterprise;
-    }
-
     public Role getRole() {
         return role;
     }
 
-
-
-    /*public String getRoleName(){
-        return switch (this.role) {
-            case Admin -> "Admin";
-            case Operator -> "Operator";
-        };
+    public void setRole(Role roleName) {
+        this.role = roleName;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public Enterprise getEnterprise() {
+        return enterprise;
     }
 
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "name='" + this.name + '\'' +
-                ", email='" + this.email + '\'' +
-                ", enterprise=" + getEnterpriseName() +
-                ", role=" + getRoleName() +
-                '}';
-    }*/
+    public void setEnterprise(Enterprise enterprise) {
+        this.enterprise = enterprise;
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-

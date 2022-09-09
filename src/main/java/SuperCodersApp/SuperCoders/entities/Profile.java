@@ -1,36 +1,54 @@
 package SuperCodersApp.SuperCoders.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Profile")
+@Table(name = "profile")
 public class Profile {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    private String username;
+    @Column(name = "image")
     private String image;
+    @Column(name = "phone")
     private String phone;
-    private String user;
+    @Column(name = "createdAt", updatable = false)
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate createdAt;
+    @Column(name = "updatedAt")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate updatedAt;
 
-    public Profile(String id, String image, String phone, String user) {
-        this.id = id;
-        this.image = image;
-        this.phone = phone;
-        this.user = user;
-        this.createdAt = LocalDate.now();
-        this.updatedAt = LocalDate.now();
-
+    protected Profile(){
     }
 
-    public String getId() {
+    public Profile(long id, String username, String image, String phone, LocalDate createdAt, LocalDate updatedAt) {
+        this.id = id;
+        this.username = username;
+        this.image = image;
+        this.phone = phone;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
+    }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getImage() {
@@ -49,14 +67,6 @@ public class Profile {
         this.phone = phone;
     }
 
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
     public LocalDate getCreatedAt() {
         return createdAt;
     }
@@ -67,17 +77,5 @@ public class Profile {
 
     public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt.now();
-    }
-
-    @Override
-    public String toString() {
-        return "Profile{" +
-                "id='" + id + '\'' +
-                ", image='" + image + '\'' +
-                ", phone='" + phone + '\'' +
-                ", user='" + user + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
     }
 }
