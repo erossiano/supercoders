@@ -1,11 +1,13 @@
 package SuperCodersApp.SuperCoders.entities;
 
 import java.time.LocalDate;
-public class Trasaction {
+import java.util.List;
+
+public class Trasaction implements List<Trasaction> {
 
     private String id;
     private String concept;
-    private Float amout;
+    private Float amount;
     private String user;
     private Enterprise enterprise;
     private LocalDate createdAt;
@@ -14,7 +16,7 @@ public class Trasaction {
    protected Trasaction(){
 
    }
-    public Trasaction(String id, String concept, Float amout, String user, Enterprise enterprise) {
+    public Trasaction(String id, String concept, Float amount, String user, Enterprise enterprise) {
         this.id = id;
         this.concept = concept;
         this.amout = amout;
@@ -41,12 +43,12 @@ public class Trasaction {
         this.concept = concept;
     }
 
-    public Float getAmout() {
+    public Float getAmount() {
         return amout;
 
     }
 
-    public void setAmout(Float amout) {
+    public void setAmount(Float amount) {
         this.amout = amout;
     }
 
@@ -87,7 +89,7 @@ public class Trasaction {
         return "Trasaction{" +
                 "id='" + id + '\'' +
                 ", concept='" + concept + '\'' +
-                ", amout=" + amout +
+                ", amount=" + amout +
                 ", user='" + user + '\'' +
                 ", enterprise=" + enterprise +
                 ", createdAt=" + createdAt +
