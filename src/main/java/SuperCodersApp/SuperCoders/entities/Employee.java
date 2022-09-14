@@ -13,25 +13,16 @@ public class Employee {
     private String name;
     @Column(name = "email")
     private String email;
-     @Column(name = "role")
-     @Enumerated(EnumType.ORDINAL)
+    @Column(name = "role")
+    @Enumerated(EnumType.ORDINAL)
     private Role role;
     @ManyToOne
-<<<<<<< HEAD
     @JoinColumn(name = "enterprise_id")
     private Enterprise enterprise;
 
     @OneToOne
     @JoinColumn(name = "profile_id")
     private Profile profile;
-=======
-    @JoinColumn(name="enterprise")
-    private Enterprise enterprise;
-
-    @Column(name = "role")
-    @Enumerated(EnumType.ORDINAL)
-    private Role role;
->>>>>>> origin/development-ddnarvaez
 
     public Profile getProfile() {
         return profile;
@@ -54,10 +45,6 @@ public class Employee {
     public long getId() {
         return id;
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/development-ddnarvaez
     public void setId(long id) {
         this.id = id;
     }
@@ -80,7 +67,6 @@ public class Employee {
     public Role getRole() {
         return role;
     }
-<<<<<<< HEAD
 
     public void setRole(Role roleName) {
         this.role = roleName;
@@ -93,20 +79,4 @@ public class Employee {
     public void setEnterprise(Enterprise enterprise) {
         this.enterprise = enterprise;
     }
-=======
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-
-    /*@Override
-    public String toString() {
-        return "Employee{" +
-                "name='" + this.name + '\'' +
-                ", email='" + this.email + '\'' +
-                ", enterprise=" + getEnterpriseName() +
-                ", role=" + getRoleName() +
-                '}';
-    }*/
->>>>>>> origin/development-ddnarvaez
 }

@@ -1,6 +1,5 @@
 package SuperCodersApp.SuperCoders.entities;
 
-<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
@@ -14,12 +13,6 @@ public class Profile {
     private long id;
     private String username;
     @Column(name = "image")
-=======
-import java.time.LocalDate;
-
-public class Profile {
-    private String id;
->>>>>>> origin/development-ddnarvaez
     private String image;
     @Column(name = "phone")
     private String phone;

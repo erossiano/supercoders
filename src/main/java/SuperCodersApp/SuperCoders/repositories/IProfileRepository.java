@@ -9,4 +9,3 @@ public interface IProfileRepository extends JpaRepository<Profile, Long> {
     Profile findById(long Id);
 }
 
-

@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-
 //Generaliza la ruta a todos los metodos
 @RequestMapping("enterprise")
 public class EnterpriseController {
@@ -51,6 +50,5 @@ public class EnterpriseController {
     @DeleteMapping("/{id}")
     public Boolean deleteEnterprise(@PathVariable("id") long id) {
         return this.enterpriseServices.deleteEnterpriseS(id);
-
     }
 }

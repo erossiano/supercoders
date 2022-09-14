@@ -8,7 +8,6 @@ import java.util.List;
 public class Enterprise {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private long id;
     @Column(name = "document", unique = true)
     private String NIT;
@@ -19,14 +18,9 @@ public class Enterprise {
     @Column(name = "phone")
     private String phone;
 
-<<<<<<< HEAD
     //@OneToMany(fetch = FetchType.LAZY)
     @OneToMany(mappedBy = "id") //mapeada por los id de emprealdos
     private List<Employee> employees;
-=======
-    protected Enterprise() {
-    }
->>>>>>> origin/development-ddnarvaez
 
     protected Enterprise() {
     }
@@ -39,10 +33,6 @@ public class Enterprise {
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {

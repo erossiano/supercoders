@@ -28,13 +28,8 @@ public class EmployeeService implements IEmployeeService{
 
     @Override
     public Boolean createEmployeeS(Employee employee) {
-<<<<<<< HEAD
         if(employee.getId() == 0L){
             //employee.setId(0L);
-=======
-        try {
-            employee.setId(0l);
->>>>>>> origin/development-ddnarvaez
             this.employeeRepository.save(employee);
             return true;
         }else{
@@ -62,8 +57,3 @@ public class EmployeeService implements IEmployeeService{
         }
     }
 }
-
-
-
-
-
