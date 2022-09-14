@@ -31,7 +31,6 @@ public class EmployeeController {
     }
 
     @PatchMapping("/{id}")
-
     public Boolean updateEmployee(@PathVariable("id") long id, @RequestBody Employee employee){
         Employee e1 = this.employeeService.getEmployeeS(id);
         if(e1 != null){
