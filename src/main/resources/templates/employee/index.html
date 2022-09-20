@@ -6,6 +6,11 @@
 
 <div class="container-fluid h-100 d-flex flex-column justify-content-center">
     <header th:replace="~{/fragments/header2 :: header2}"></header>
+
+    <th:block th:if="${message != null}">
+        <div th:replace="~{/fragments/alert :: alert (message=${message})}">&nbsp;</div>
+    </th:block>
+
     <div class="h-100 d-flex flex-row justify-content-start align-items-start">
         <aside class="col-md-3 mx-auto">
             <div th:insert="~{/fragments/sidebar :: sidebar}"></div>
@@ -25,9 +30,10 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Address</th>
-                        <th>Phone</th>
-                        <th>Document</th>
+                        <th>Email</th>
+                        <th>Profile</th>
+                        <th>Role</th>
+                        <th>Enterprise</th>
                         <th>Edit</th>
                         <th>Delete</th>
 
@@ -35,23 +41,24 @@
 
                     <!--Llenamos la tabla dibujada-->
                     <!--En nuestro controller, creamos en viewEmpresa un modelo con un atributo llamado emplist donde esta guardada la lista de todas las empresas-->
-                    <tr th:each="enterprise : ${listEnterprise}">
-                        <td th:text="${enterprise.id}"></td>
-                        <td th:text="${enterprise.name}"></td>
-                        <td th:text="${enterprise.address}"></td>
-                        <td th:text="${enterprise.phone}"></td>
-                        <td th:text="${enterprise.NIT}"></td>
+                    <tr th:each="employee : ${listEmployee}">
+                        <td th:text="${employee.id}"></td>
+                        <td th:text="${employee.name}"></td>
+                        <td th:text="${employee.email}"></td>
+                        <td th:text="${employee.profile.username}"></td>
+                        <td th:text="${employee.role}"></td>
+                        <td th:text="${employee.enterprise.name}"></td>
 
-                        <td><button type="button" class="btn btn-warning px-4 me-sm-3"><a th:href="@{/enterprise/{id}/edit(id=${enterprise.id})}">Edit</a></button></td>
+                        <td><button type="button" class="btn btn-warning px-4 me-sm-3"><a th:href="@{/employee/{id}/edit(id=${employee.id})}">Edit</a></button></td>
                         <td>
-                            <form th:action="@{/enterprise/{id}/delete(id=${enterprise.id})}" th:method="post">
+                            <form th:action="@{/employee/{id}/delete(id=${employee.id})}" th:method="post">
                                 <button id="btnDelete" type="submit" class="btn btn-danger px-4 me-sm-3">Delete</button>
                             </form>
                         </td>
                     </tr>
                 </table>
 
-                <button type="button" class="btn btn-success"><a th:href="@{/enterprise/new}">Add enterprise</a></button>
+                <button type="button" class="btn btn-success"><a th:href="@{/employee/new}">Add employee</a></button>
             </div>
             <!--FIN DEL CONTENIDO MODIFICABLE-->
         </main>
