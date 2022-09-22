@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+<head th:insert="~{/fragments/head :: head}"></head>
+
+<body id="top">
+
+<!-- ################################################################################################ -->
+<!-- Top Background Image Wrapper -->
+<div class="bgded overlay padtop" style="background-image:url('/img/demo/backgrounds/WallpaperDog-605635.jpg');">
+    <!-- ################################################################################################ -->
+    <header id="header" class="hoc clear">
+        <div id="logo" class="fl_left">
+            <!-- ################################titulopagina####################################### -->
+            <h1 class="titulo"> Supercoders Comics</h1>
+            <!--################################################################################################ -->
+        </div>
+        <!-- #############################Menusuperior############################################################ -->
+
+        <!-- ################################################################################################ -->
+        <nav id="mainav" class="fl_right">
+            <!-- ##############################botoniniciosecion########################################################## -->
+            <ul sec:authorize="isAuthenticated()" class="clear">
+                <li>
+                    <a th:href="@{/enterprise}" type="button" class="btn btn-outline-secondary btn-sm px-4">Enterprise</a>
+                </li>
+                <li>
+                    <a href="/logout" type="button" class="btn btn-outline-danger btn-sm px-4">Logout</a>
+                </li>
+            </ul>
+            <ul sec:authorize="!isAuthenticated()" class="clear">
+                <li>
+                    <a th:href="@{/oauth2/authorization/auth0}" type="button" class="btn btn-outline-secondarysm px-4">Log In</a>
+                </li>
+            </ul>
+            <!-- ################################################################################################ -->
+        </nav>
+    </header>
+    <div class="logoMontegez">
+        <a th:href="@{/}"><img class="logoPrimario" src="/img/logoo.png" alt="#" /></a>
+    </div>
+    <!-- ################################################################################################ -->
+    <div id="pageintro" class="hoc clear">
+        <!-- ################################################################################################ -->
+        <article>
+            <h3 class="heading">Nosotros</h3>
+            <p class="quienesSomos">Distribuimos y comercializamos todo tipo de artículos geek como, comics, mangas, figuras de acción, ropa, entre otros. Detrás de la marca hay un gran sin número de personas que se esfuerzan al máximo día a día en entregarles los mejores productos.</p>
+        </article>
+        <!-- ################################################################################################ -->
+    </div>
+    <!-- ################################################################################################ -->
+</div>
+<!-- ##########################################iniciocards############################################## -->
+
+<th:block th:if="${message != null}">
+    <!-- /* The message code is returned from the @Controller */ -->
+    <div th:replace="~{/fragments/alert :: alert (message=${message})}">&nbsp;</div>
+</th:block>
+
+<div class="cards00">
+    <div class="cards01">
+        <img src="/img/ai.jpg" class="imagesCard1" alt="...">
+        <div class="card-body">
+            <p class="card-text"><b>VENTA DE VIDEOJUEGOS </b><br><hr>
+            Venta de videojuegos para todo tipo de consolas de video, alquiler de peliculas, play 1, 2 ,3, psp's y xbox´s</p>
+        </div>
+    </div>
+    <div class="cards02">
+        <img src="/img/reparar.png" class="imagesCard2" alt="...">
+        <div class="card-body">
+            <p class="card-text"><b>ARTÍCULOS ORIGINALES</b><br><hr>
+            Artículos importados de su país de origen, 100 % garantizados, somos coleccionistas y contamos con un personal calificado experto en piezas vintage</p>
+        </div>
+    </div>
+    <div class="cards03">
+        <img src="/img/huella-dactilar.png" class="imagesCard3" alt="...">
+        <div class="card-body">
+            <p class="card-text"><b>COMICS, MANGAS E HISTORIETAS</b><br><hr>
+            Venta de comics, mangas e historietas de diferentes paises, apoyamos la industría colombiano y aportamos al desarrollo y reproducción de piezas originales.</p>
+        </div>
+    </div>
+</div>
+<!-- ##########################################fincard################################################### -->
+
+<!-- ##########################################infoempresa##########################################-->
+<div id="jewellery" class="Best">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2>Nuestra compañía</h2>
+                    <p>
+                        La tienda Supercoders comics comenzó su labor como tienda online mediante Fanpage en Facebook, rápidamente haciéndose un lugar en el “mundillo” del anime manga mediante
+                        la asistencia a eventos y convenciones, como g-TON All Night, Festival Jzone y Festival Asian Sun Fest, eventos con invitados especiales como cosplayers, dobladores y
+                        cantantes de openings anime.
+                        <br>
+                        En el año 2012 Supercoders hace presencia por primera vez en la cuarta edición del Salón del Ocio y la Fantasía en Corferias como tienda expositora, ganando así, mucho más
+                        renombre y atrayendo nuevos clientes y para el 22 de Junio del año 2014 Supercoders abre su primer negocio local en el sector de Hipotecho Occidental, punto clave en cercanías
+                        del Centro Comercial Plaza de las Américas, Cine Colombia, Mundo Aventura y el Estadio de Techo.
+                        <br>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="best_main">
+                    <div class="row d_flex">
+                        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
+                            <div class="best_text">
+                                <h1>Figuras de acción</h1>
+                                <p>Funko pops
+                                    <br>
+                                    Iron man
+                                    <br>
+                                    Spiderman
+                                    <br>
+                                    Wolverine
+                                    <br>
+                                    Hulk
+                                    <br>
+                                    Doctor Strange
+                                    <br>
+                                    Kirito
+                                    <br>
+                                    lufy
+                                    <br>
+                                    Zoro
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+                            <div class="best_img">
+                                <a class="beimg3"href="#"><img src="/img/beimg.png" alt="#" /></a>
+                                <!--<figure> <img src="/img/beimg.png"></figure>-->-
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="best_main">
+                    <div class="row d_flex">
+                        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+                            <div class="best_img croos_rt">
+                                <a class="beimg3"href="#"><img src="/img/beimg2.png" alt="#" /></a>
+                                <!---<figure><img src="/img/beimg2.png"></figure>-->
+                            </div>
+                        </div>
+                        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
+                            <div class="best_text flot_left">
+                                <h1>Mangas, historietas y comics</h1>
+                                <p>¡Disponibles todos los tomos!
+                                    Tokyo Ghoul
+                                    <br>
+                                    Jojo´s Bizarre adventures
+                                    <br>
+                                    Demon layer: Kimetsu no yaiba
+                                    <br>
+                                    One piece
+                                    <br>
+                                    assassination classroom
+                                    <br>
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="best_main pa_bot">
+                    <div class="row d_flex">
+                        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12">
+                            <div class="best_text">
+                                <h1>Prendas de vestir</h1>
+                                <p>Camisetas
+                                    <br>
+                                    Kimonos
+                                    <br>
+                                    Vestidos
+                                    <br>
+                                    Faldas
+                                    <br>
+                                    Buzos y hoodies
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+                            <div class="best_img d_none">
+                                <a class="beimg3"href="#"><img src="/img/beimg3.png" alt="#" /></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:insert="~{/fragments/footer :: copy}"></div>
+<!--
+<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>-->
+
+<script th:inline="javascript">
+    window.onload=function(){
+
+        var msg = [[${message}]];
+        if (msg == "saveOK"){
+            Command : toastr["success"]("Empresa creada con éxito!")
+        }
+        else if (msg == "updateOK"){
+            Command : toastr["success"]("Empresa actualizada con éxito!")
+        }
+        else if (msg == "deleteOK"){
+            Command : toastr["error"]("Empresa eliminada con éxito!")
+        }
+        else if (msg == "deleteError"){
+            Command : toastr["error"]("Empresa no ha sido eliminada!")
+        }
+        toastr.options={
+            "positionClass": "toast-top-right",
+            "showDuration":"300",
+            "showMethod":"fadeIn",
+            "hideMethod":"fadeOut",
+        }
+
+
+    }
+
+</script>
+<!-- JAVASCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="/layout/scripts/jquery.backtotop.js"></script>
+<script src="/layout/scripts/jquery.mobilemenu.js"></script>
+<!-- Javascript files-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="js/plugin.js"></script>
+<!-- sidebar -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/js/custom.js"></script>
+<script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+</body>
+</html>

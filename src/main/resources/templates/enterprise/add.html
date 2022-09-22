@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="~{/fragments/head :: head}"></head>
+
+<body>
+
+<div class="container-fluid h-100 d-flex flex-column justify-content-center">
+    <header th:replace="~{/fragments/header2 :: header2}"></header>
+
+    <th:block th:if="${message != null}">
+        <div th:replace="~{/fragments/alert :: alert (message=${message})}">&nbsp;</div>
+    </th:block>
+
+    <div class="h-100 d-flex flex-row justify-content-start align-items-start">
+        <aside class="col-md-3 mx-auto">
+            <div th:insert="~{/fragments/sidebar :: sidebar}"></div>
+        </aside>
+        <main class="content col-md-9 mx-auto">
+            <!--CONTENIDO MODIFICABLE-->
+            <div id="section-title" class="row">
+                <div class="align-items col-md-12 mt-5">
+                    <h3 class="text-center text-muted">
+                        New Enterprise
+                    </h3>
+                </div>
+            </div>
+
+            <div id="section-data" class="row">
+                <div class="col-md-12">
+
+                    <form th:action="@{/enterprise}" th:object="${enterprise}" method="post">
+                        <!--Campo para nombre-->
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3" for="name">Name:</label>
+                                <div class="col-md-6">
+                                    <input type="text" th:field="*{name}" class="form-control" id="name" required="required"></div>
+                            </div>
+                        </div>
+
+                        <!--Campo para direccion-->
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3" for="address">Address:</label>
+                                <div class="col-md-6">
+                                    <input type="text" th:field="*{address}" class="form-control" id="address" required="required"></div>
+                            </div>
+                        </div>
+
+                        <!--Campo para telefono-->
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3" for="phone">Phone:</label>
+                                <div class="col-md-6">
+                                    <input type="text" th:field="*{phone}" class="form-control" id="phone" required="required"></div>
+                            </div>
+                        </div>
+
+                        <!--Campo para NIT-->
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-3" for="NIT">Document:</label>
+                                <div class="col-md-6">
+                                    <input type="text" th:field="*{NIT}" class="form-control" id="NIT" required="required"></div>
+                            </div>
+                        </div>
+
+
+                        <!--Boton para enviar todo y ejecutar accion -->
+                        <div class="row mt-3">
+                            <div class="col-md-2">
+                                <button class="btn btn-success">Save</button>
+                            </div>
+                            <div class="col-md-2">
+                                <a th:href="@{/enterprise}" class="btn btn-info" role="button">Back</a>
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+            <!--FIN DEL CONTENIDO MODIFICABLE-->
+        </main>
+    </div>
+
+    <footer class="row d-flex">
+        <div th:insert="~{/fragments/footer :: copy}"></div>
+    </footer>
+</div>
+
+
+<script th:inline="javascript">
+    window.onload=function(){
+
+        var msg = [[${message}]];
+        if (msg == "saveOK"){
+            Command : toastr["success"]("Empresa creada con éxito!")
+        }
+        else if (msg == "updateOK"){
+            Command : toastr["success"]("Empresa actualizada con éxito!")
+        }
+        else if (msg == "deleteOK"){
+            Command : toastr["error"]("Empresa eliminada con éxito!")
+        }
+        else if (msg == "deleteError"){
+            Command : toastr["error"]("Empresa no ha sido eliminada!")
+        }
+        toastr.options={
+            "positionClass": "toast-top-right",
+            "showDuration":"300",
+            "showMethod":"fadeIn",
+            "hideMethod":"fadeOut",
+        }
+
+
+    }
+
+</script>
+
+</body>
+</html>
