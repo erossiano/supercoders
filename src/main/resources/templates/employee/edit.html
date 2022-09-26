@@ -62,11 +62,13 @@
                             <label class="col-md-3" for="profile">Profile:</label>
                             <div class="col-md-6">
                                 <select class="form-control" th:field="*{profile}" name="profile" id="profile">
-                                    <th:block th:each="profile : ${profiles}">
-                                        <option th:value="${profile.id}"
-                                                th:text="${profile.id} + ' | ' + ${profile.nickname}"/>
+                                    <option th:value="${employee.profile.id}" th:text="${employee.profile.id} + ' | ' + ${employee.profile.name}" selected/>
+                                    <th:block th:each="prof : ${profiles}">
+                                        <option th:value="${prof.id}"
+                                                th:text="${prof.id} + ' | ' + ${prof.name}"/>
                                     </th:block>
                                 </select>
+                                <!--<a th:href="@{/profile/{id}/edit(id=*{employee.profile.id})}" >View Profile</a>-->
                             </div>
                         </div>
 

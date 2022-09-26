@@ -1,5 +1,6 @@
 package SuperCodersApp.SuperCoders.services;
 
+import SuperCodersApp.SuperCoders.entities.Employee;
 import SuperCodersApp.SuperCoders.entities.Profile;
 import SuperCodersApp.SuperCoders.repositories.IProfileRepository;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,10 @@ public class ProfileService implements IProfileService{
     @Override
     public List<Profile> getAllProfileS() {
         return this.profileRepository.findAll();
+    }
+
+    public List<Profile> getProfilesByEmployeeIsNull() {
+        return this.profileRepository.findProfilesByEmployeeIsNull();
     }
 
     @Override
