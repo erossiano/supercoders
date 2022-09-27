@@ -1,43 +1,70 @@
 package SuperCodersApp.SuperCoders.controllers;
 
 import SuperCodersApp.SuperCoders.entities.Profile;
-import SuperCodersApp.SuperCoders.services.ProfileService;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 
 @Controller
+@EnableAutoConfiguration
 public class FrontController {
 
     ProfileController profileController;
+    Profile profile;
+
+    public FrontController(ProfileController profileController) {
+        this.profileController = profileController;
+    }
+
+/*    @GetMapping({"","/", "/index"})
+    public String index(Model model) {
+        return  "home";
+    }*/
 
     @GetMapping("/")
-    public String index() {
-
-        return "index"; //Llamamos al HTML
-    }
-
-    @GetMapping("/login")
-    public String login(Model model, @AuthenticationPrincipal OidcUser principal) {
+    public String index(Model model, @AuthenticationPrincipal OidcUser principal) {
 
         if(principal != null){
+            this.profile = new Profile();
             System.out.println(principal.getClaims());
-            //Profile profile = this.profileController.createProfile(principal.getClaims());
-            model.addAttribute("user", principal.getClaims());
-            return  "user/index";
+            this.profile = this.profileController.getOrCreateProfile(principal.getClaims());
+            model.addAttribute("user", this.profile);
+            return "user/dashboard";
         }
 
-        return  "index";
+        return  "home";
     }
+/*
+    @GetMapping("/user")
+    public String userDashboard(Model model, @AuthenticationPrincipal OidcUser principal) {
+        if(principal != null){
+            this.profile = new Profile();
+            //this.profile.setOuth0Id(principal.getClaims().);
+            System.out.println(principal.getClaims());
+        }
 
-    @GetMapping("/user/index")
-    public String userIndex(Model model, @AuthenticationPrincipal OidcUser principal) {
         model.addAttribute("user", principal.getClaims());
-        return "user/index"; //Llamamos al HTML
-    }
+        return "user/dashboard"; //Llamamos al HTML
+    }*/
 
+/*    @RequestMapping("/error")
+    public String handleError(HttpServletRequest request) {
+        Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
+
+        if (status != null) {
+            Integer statusCode = Integer.valueOf(status.toString());
+*//*
+            if(statusCode == HttpStatus.NOT_FOUND.value()) {
+                return "error-404";
+            }
+            else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
+                return "error-500";
+            }*//*
+        }
+        return "application/error";
+    }*/
 }
