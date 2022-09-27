@@ -30,23 +30,18 @@
 								<img th:src="@{${user.image}}" class="img-fluid rounded-start" th:alt="${user.name}"/>
 							</div>
 							<div class="col-md-8">
-								<div class="card-body">
+								<div class="card-body text-center">
 									<h3 th:text="${user.name}" class="card-title">John Doe</h3>
 									<p th:text="${user.email}" class="card-text">
 
 									</p>
 									<p class="card-text">
-										<small th:text="${user.nickname}">Operator</small>
+										<small><a class="btn btn-primary" th:href="@{/profile/{id}/edit(id=${user.id})}">Profile</a></small>
 									</p>
 								</div>
 							</div>
 						</div>
 					</div>
-
-
-
-
-
 
 
 				</div>
