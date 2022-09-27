@@ -22,21 +22,20 @@ public class Transaction {
     private Enterprise enterprise;
     @Column(name="createdAt")
     @JsonFormat(pattern="yyyy-MM-dd")
-    private Date createdAt;
+    private LocalDate createdAt;
 
     @Column(name="updatedAt")
     @JsonFormat(pattern="yyyy-MM-dd")
-    private Date updatedAt;
+    private LocalDate updatedAt;
 
     public Transaction() {
     }
-    public Transaction(String concept, float amount, Employee anEmployee, Date updatedAt, Enterprise aEnterprise) {
+    public Transaction(String concept, float amount, Employee anEmployee, LocalDate updatedAt, Enterprise aEnterprise) {
         this.concept = concept;
         this.amount = amount;
         this.employee = anEmployee;
         this.enterprise = aEnterprise;
-        Date date = new Date();
-        this.createdAt = date;
+        this.createdAt = LocalDate.now();
         this.updatedAt = updatedAt;
     }
 
@@ -90,10 +89,10 @@ public class Transaction {
         return createdAt.toString();
     }
 
-    public Date getUpdatedAt() {
+    public LocalDate getUpdatedAt() {
         return this.updatedAt;
     }
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
     }
 

@@ -58,7 +58,7 @@ public class FrontTransactionController {
     }
 
     @PostMapping("/transaction")
-    public String saveTransaction(@AuthenticationPrincipal OidcUser principal, RedirectAttributes redirectAttributes,Transaction transaction) {
+    public String saveTransaction(@AuthenticationPrincipal OidcUser principal, RedirectAttributes redirectAttributes, Transaction transaction) {
         //Validacion de acceso
         if(principal == null){
             redirectAttributes.addFlashAttribute("message", "Must be logged!");
