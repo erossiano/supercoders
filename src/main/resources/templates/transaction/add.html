@@ -49,15 +49,15 @@
                         <!--Campo para CreatedAt-->
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label class="col-md-3" for="createdAt">Created at:</label>
+                                <label class="col-md-3" for="updatedAt">Created at:</label>
                                 <div class="col-md-6">
-                                    <input type="date" th:date="*{updatedAt}" class="form-control" id="createdAt" required="required"></div>
+                                    <input type="date" th:field="*{updatedAt}" class="form-control" id="updatedAt" required="required"></div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label class="col-md-3" for="createdAt">Employee:</label>
+                                <label class="col-md-3" for="employee">Employee:</label>
                                 <div class="col-md-6">
                                     <select class="form-control" name="employee" id="employee">
                                         <option  th:each="empl : ${employees}"
@@ -67,7 +67,7 @@
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label class="col-md-3" for="createdAt">Enterprise:</label>
+                                <label class="col-md-3" for="employee">Enterprise:</label>
                                 <div class="col-md-6">
                                     <select class="form-control" name="enterprise" id="enterprise">
                                         <option th:each="enterprise : ${enterprises}"
