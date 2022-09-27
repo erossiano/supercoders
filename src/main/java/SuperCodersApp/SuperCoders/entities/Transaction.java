@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 public class Transaction {
@@ -20,21 +21,23 @@ public class Transaction {
     @ManyToOne
     private Enterprise enterprise;
     @Column(name="createdAt")
-    private LocalDate createdAt;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date createdAt;
 
     @Column(name="updatedAt")
     @JsonFormat(pattern="yyyy-MM-dd")
-    private LocalDate updatedAt;
+    private Date updatedAt;
 
     public Transaction() {
     }
-    public Transaction(String concept, float amount, Employee anEmployee, Enterprise aEnterprise) {
+    public Transaction(String concept, float amount, Employee anEmployee, Date updatedAt, Enterprise aEnterprise) {
         this.concept = concept;
         this.amount = amount;
         this.employee = anEmployee;
         this.enterprise = aEnterprise;
-        this.createdAt = LocalDate.now();
-        this.updatedAt = LocalDate.now();
+        Date date = new Date();
+        this.createdAt = date;
+        this.updatedAt = updatedAt;
     }
 
     public long getId() {
@@ -87,11 +90,11 @@ public class Transaction {
         return createdAt.toString();
     }
 
-    public LocalDate getUpdatedAt() {
+    public Date getUpdatedAt() {
         return this.updatedAt;
     }
-    public void setUpdatedAt(LocalDate updatedAt) {
-        this.updatedAt = updatedAt.now();
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     /*public void setCreatedAt() {

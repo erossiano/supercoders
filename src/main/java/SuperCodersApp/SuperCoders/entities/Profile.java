@@ -69,7 +69,7 @@ public class Profile {
     }
 
     public void setName(String name) {
-        this.nickname = name;
+        this.name = name;
     }
 
 

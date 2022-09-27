@@ -43,7 +43,7 @@
 						<td th:text="${trans.id}"></td>
 						<td th:text="${trans.concept}"></td>
 						<td th:text="${trans.amount}"></td>
-						<td th:date="${trans.updatedAt}"></td>
+						<td th:text="${trans.updatedAt}"></td>
 						<td th:text="${trans.employee!=null}?${trans.employee.name}:''"></td>
 						<td>
 							<button type="button" class="btn btn-sm btn-warning px-4 me-sm-3"><a th:href="@{/transaction/{id}/edit(id=${trans.id})}">Edit</a></button>

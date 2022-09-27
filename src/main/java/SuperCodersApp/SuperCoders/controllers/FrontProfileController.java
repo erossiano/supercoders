@@ -1,8 +1,8 @@
 package SuperCodersApp.SuperCoders.controllers;
 
 import SuperCodersApp.SuperCoders.entities.Employee;
-import SuperCodersApp.SuperCoders.entities.Enterprise;
 import SuperCodersApp.SuperCoders.entities.Profile;
+import SuperCodersApp.SuperCoders.entities.Enterprise;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
@@ -16,111 +16,112 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
-public class FrontEmployeeController {
+public class FrontProfileController {
 
     final
+    ProfileController profileController;
     EmployeeController employeeController;
 
     EnterpriseController enterpriseController;
-    ProfileController profileController;
 
-    public FrontEmployeeController(EmployeeController employeeController, EnterpriseController enterpriseController, ProfileController profileController) {
-        this.employeeController = employeeController;
+
+    public FrontProfileController(ProfileController profileController, EnterpriseController enterpriseController, EmployeeController employeeController) {
         this.enterpriseController = enterpriseController;
         this.profileController = profileController;
+        this.employeeController = employeeController;
     }
 
-    @GetMapping("/employee")
-    public String indexEmployee(@AuthenticationPrincipal OidcUser principal, RedirectAttributes redirectAttributes, Model model, @ModelAttribute("message") String message) {
+    @GetMapping("/profile")
+    public String indexProfile(@AuthenticationPrincipal OidcUser principal, RedirectAttributes redirectAttributes, Model model, @ModelAttribute("message") String message) {
         //Validacion de acceso
         if(principal == null){
             redirectAttributes.addFlashAttribute("message", "Must be logged!");
             return "redirect:/";
         }
 
-        List<Employee> listEmployee = employeeController.getAllEmployee();
-        model.addAttribute("listEmployee", listEmployee);
+        List<Profile> listProfile = profileController.getAllProfile();
+        model.addAttribute("listProfile", listProfile);
         model.addAttribute("message", message);
-        return "employee/index"; //Llamamos al HTML
+        return "profile/index"; //Llamamos al HTML
     }
 
-    @GetMapping("/employee/new")
-    public String addEmployee(@AuthenticationPrincipal OidcUser principal, RedirectAttributes redirectAttributes, Model model, @ModelAttribute("message") String message) {
+    @GetMapping("/profile/new")
+    public String addProfile(@AuthenticationPrincipal OidcUser principal, RedirectAttributes redirectAttributes, Model model, @ModelAttribute("message") String message) {
         //Validacion de acceso
         if(principal == null){
             redirectAttributes.addFlashAttribute("message", "Must be logged!");
             return "redirect:/";
         }
 
-        Employee employee = new Employee();
+        Profile profile = new Profile();
         List<Enterprise> enterprises = enterpriseController.getAllEnterprise();
-        List<Profile> profiles = profileController.getAllProfileWithoutEmployee();
-        model.addAttribute("employee", employee);
+        List<Profile> profiles = profileController.getAllProfile();
+        model.addAttribute("profile", profile);
         model.addAttribute("enterprises", enterprises);
-        model.addAttribute("profiles", profiles);
         model.addAttribute("message", message);
-        return "employee/add";
+        return "profile/add";
     }
 
-    @PostMapping("/employee")
-    public String saveEmployee(@AuthenticationPrincipal OidcUser principal, Employee employee, RedirectAttributes redirectAttributes) {
+    @PostMapping("/profile")
+    public String saveProfile(@AuthenticationPrincipal OidcUser principal, Profile profile, RedirectAttributes redirectAttributes) {
         //Validacion de acceso
         if(principal == null){
             redirectAttributes.addFlashAttribute("message", "Must be logged!");
             return "redirect:/";
         }
-        if (employeeController.createEmployee(employee)) {
+        if (profileController.createProfile(profile) != null) {
             redirectAttributes.addFlashAttribute("message", "saveOK");
-            return "redirect:/employee";
+            return "redirect:/profile";
         }
         redirectAttributes.addFlashAttribute("message", "saveError");
-        return "redirect:/employee/add";
+        return "redirect:/profile/add";
     }
 
-    @GetMapping("/employee/{id}/edit")
-    public String editEmployee(@AuthenticationPrincipal OidcUser principal, RedirectAttributes redirectAttributes, Model model, @PathVariable long id, @ModelAttribute("message") String message) {
+    @GetMapping("/profile/{id}/edit")
+    public String editProfile(@AuthenticationPrincipal OidcUser principal, RedirectAttributes redirectAttributes, Model model, @PathVariable long id, @ModelAttribute("message") String message) {
         //Validacion de acceso
         if(principal == null){
             redirectAttributes.addFlashAttribute("message", "Must be logged!");
             return "redirect:/";
         }
-        Employee employee = employeeController.getEmployee(id);
+        Profile profile = profileController.getProfile(id);
         List<Enterprise> enterprises = enterpriseController.getAllEnterprise();
-        List<Profile> profiles = profileController.getAllProfileWithoutEmployee();
-        model.addAttribute("employee", employee);
+        List<Employee> employees = employeeController.getAllEmployeeWithoutProfile();
+
+        model.addAttribute("profile", profile);
         model.addAttribute("enterprises", enterprises);
-        model.addAttribute("profiles", profiles);
+        model.addAttribute("employees", employees);
         model.addAttribute("message", message);
-        return "employee/edit";
+        return "profile/edit";
     }
 
-    @PostMapping("/employee/{id}")
-    public String updateEmployee(@AuthenticationPrincipal OidcUser principal, @PathVariable long id, @ModelAttribute("employee") Employee employee, RedirectAttributes redirectAttributes) {
+    @PostMapping("/profile/{id}")
+    public String updateProfile(@AuthenticationPrincipal OidcUser principal, @PathVariable long id, @ModelAttribute("profile") Profile profile, RedirectAttributes redirectAttributes) {
         //Validacion de acceso
         if(principal == null){
             redirectAttributes.addFlashAttribute("message", "Must be logged!");
             return "redirect:/";
         }
-        if (employeeController.updateEmployee(id, employee)) {
+        if (profileController.updateProfile(id, profile)) {
             redirectAttributes.addFlashAttribute("message", "updateOK");
-            return "redirect:/employee";
+            return "redirect:/profile";
         }
         redirectAttributes.addFlashAttribute("message", "updateError");
-        return "redirect:/employee/edit";
+        return "redirect:/profile/edit";
     }
 
-    @PostMapping("/employee/{id}/delete")
-    public String deleteEmployee(@AuthenticationPrincipal OidcUser principal, @PathVariable Integer id, RedirectAttributes redirectAttributes) {
+    @PostMapping("/profile/{id}/delete")
+    public String deleteProfile(@AuthenticationPrincipal OidcUser principal, @PathVariable Integer id, RedirectAttributes redirectAttributes) {
         //Validacion de acceso
         if(principal == null){
             redirectAttributes.addFlashAttribute("message", "Must be logged!");
             return "redirect:/";
         }
-        if (employeeController.deleteEmployee(id)) {
+        if (profileController.deleteProfile(id)) {
             redirectAttributes.addFlashAttribute("message", "deleteOK");
-            return "redirect:/employee";
+            return "redirect:/profile";
         }
         redirectAttributes.addFlashAttribute("message", "deleteError");
-        return "redirect:/employee";
+        return "redirect:/profile";
     }
 }

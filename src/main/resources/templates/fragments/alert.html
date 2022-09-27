@@ -5,9 +5,9 @@
 </head>
 <body>
 
-<div th:fragment="alert (message)" style="max-width: 30pc;" th:if="${(message)}" class="alert alert-warning alert-dismissible fade show mx-auto" role="alert">
+<div id="message_alert" th:fragment="alert (message)" th:if="${(message)}" class="alert alert-warning alert-dismissible fade show mx-auto" role="alert">
     <span th:text="${(message)}" ></span>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <button onclick="message_alert.hidden=true;"  type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 
 </body>
